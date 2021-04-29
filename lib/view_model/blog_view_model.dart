@@ -12,6 +12,7 @@ class BlogViewModel extends ChangeNotifier{
     if(blogs.blogs !=null){
       blogNames = blogs.blogs?.map((e) => "EX ${e.title}").toList();
     }
+    notifyListeners();
   }
   Future<void> fetchBlog() async => await BlogRepositoriesImpl(BlogApiImpl()).fetchBlog();
 }

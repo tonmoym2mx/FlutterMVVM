@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/data/model/blogs_response.dart';
 import 'package:flutter_mvvm/data/remote/api/blogs_api_impl.dart';
 import 'package:flutter_mvvm/data/repositories/blog_repositories_impl.dart';
+import 'package:flutter_mvvm/view/screens/details_page.dart';
 import 'package:flutter_mvvm/view_model/blog_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -36,14 +37,17 @@ class _BlogPageState extends State<BlogPage> {
           builder: (context, snapshot){
             if(snapshot.hasData){
               var listOfBlog = (snapshot.data as BlogsResponse).blogs;
-
-
               return ListView.builder(
                    itemCount: listOfBlog?.length ?? 0,
                    itemBuilder: (BuildContext context, int index){
                      var blog = listOfBlog?[index];
                 return ListTile(
-                  leading: Text("Loading.."),
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => PageDetails(blog!)
+                    ));
+                  },
+                  leading: Icon(Icons.access_alarm) ,
                   title:Text(blog?.title ?? ""),
                   subtitle: Text(blog?.author?.name ?? ""),
                 );

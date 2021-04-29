@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mvvm/data/model/blogs_response.dart';
 import 'package:flutter_mvvm/data/remote/api/blogs_api_impl.dart';
 import 'package:flutter_mvvm/view/screens/blogs_page.dart';
+import 'package:flutter_mvvm/view/screens/main_page.dart';
 
 void main() async{
   runApp(MyApp());
@@ -9,6 +11,7 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BlogPage(),
+      home: MainPage(),
     );
   }
 }
